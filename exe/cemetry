@@ -3,4 +3,4 @@
 require "cemetry"
 
 seq = Cemetry::Sequence.new(120)
-seq.play -> { [36, 37, 38, 39, 40].sample }
+seq.play -> { ["C", "D", "E", "F", "G"].sample }
