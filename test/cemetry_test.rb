@@ -5,7 +5,15 @@ class CemetryTest < Minitest::Test
     refute_nil ::Cemetry::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_if_bpm_msec_is_assigned
+    seq = Cemetry::Sequence.new(120)
+    assert seq.bpm_msec
+  end
+
+  def test_if_proc_is_called
+    proc_mock = Minitest::Mock.new
+    proc_mock.expect(:call, 36)
+    Cemetry::Sequence.new(120).play(proc_mock, only_once: true)
+    assert proc_mock.verify
   end
 end
