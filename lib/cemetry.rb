@@ -19,7 +19,7 @@ module Cemetry
         retry
       end
       loop do
-        note = Noone::NOTE_TABLE[proc.call]
+        note = Noone::NOTE_TABLE[proc.call.upcase]
         osc_client.send(OSC::Message.new("/sequence", note))
         sleep(@bpm_msec.quarter_note / 1_000)
         break if only_once
